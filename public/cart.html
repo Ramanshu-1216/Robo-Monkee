@@ -127,18 +127,27 @@ nav{
 }
 
         .blink {
-          animation: blink-animation 1s steps(5, start) infinite;
-          -webkit-animation: blink-animation 2s steps(5, start) infinite;
+          animation-name: example;
+          animation-duration: 4s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          /* animation: blink-animation 2s steps(2, start) infinite; */
+          /* -webkit-animation: blink-animation 2s steps(2, start) infinite; */
         }
-        @keyframes blink-animation {
-          to {
-            visibility: hidden;
-          }
-        }
-        @-webkit-keyframes blink-animation {
-          to {
-            visibility: hidden;
-          }
+        @keyframes example {
+          0%   {transform: rotate(20deg)}
+          10% {transform: rotate(-30deg);}
+          20% {transform: rotate(30deg);}
+          /* 30% {transform: rotate(-30deg);} */
+          30% {transform: rotate(0deg);}
+          60%  {transform: rotate(-20deg);}
+          80%  {transform: rotate(20deg)}
+          100% {transform: rotate(0deg);}
+          /* 45% {transform: rotate(0deg);}
+          50% {transform: rotate(0deg);}
+          75% {transform: rotate(0deg);}
+          100% {transform: rotate(0deg);} */
+          /* 100% {transform: rotate(-30deg);} */
         }
       </style>
     </head>
