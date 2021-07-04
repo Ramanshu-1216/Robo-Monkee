@@ -200,6 +200,9 @@ nav{
                 <a class="dropdown-item" href="#writeReview">Write a review!</a>
               </div>
             </li>
+            <li class="nav-item" id="signOutButton" style="display: none">
+              <a onClick="signOut();" class="nav-link text-light" href="#">Sign Out</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -288,7 +291,7 @@ nav{
                     <input type="text" name="quantity" value="1" class="qty">
                     <div class="qtyplus">+</div>
                 </form>
-                <a href="#" class="round-black-btn" style="box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;">BUY</a>
+                <a href="#" onClick="checkUser(true);" class="round-black-btn" style="box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;">BUY</a>
                   </div>
                 </div>
               </div>
@@ -678,6 +681,8 @@ nav{
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+
   <!-- TODO: Add SDKs for Firebase products that you want to use
   https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
