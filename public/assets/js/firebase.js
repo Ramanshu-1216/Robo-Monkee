@@ -61,3 +61,67 @@ function storeToFirebase(rootDoc, rootCollection){
         console.error("Error writing document: ", error);
     });
 }
+function signUp() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            /** @type {firebase.auth.OAuthCredential} */
+            var credential = result.credential;
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            alert("You have been logged in successgully!");
+            window.location = "../cart.html";
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            console.log(error);
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
+}
+var isBuying;
+function checkUser(st) {
+    isBuying = st;
+    signOutButton = document.getElementById("signOutButton");
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          var uid = user.uid;
+          console.log(user.displayName);
+          signOutButton.style.display = "block";
+          // ...
+        } else {
+          // User is signed out
+          // ...iss
+          signOutButton.style.display = "none";
+          if(isBuying){
+            alert("Please log in and then continue!");
+            window.location = "../login.html";
+        }
+        
+        }
+      });
+}
+
+function signOut() {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        alert("Signed out successfully!");
+        isBuying = false;
+        // window.location = "../index.html";
+      }).catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+}
