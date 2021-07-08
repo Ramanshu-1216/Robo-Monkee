@@ -533,16 +533,17 @@ function btController(cnt){
     if(Serial.available() > 0){
         recieved = Serial.read();
         Serial.print(recieved);
-        Serial.print("\n");
-        if(recieved ==      'u')`+uVal+`();  
-        else if(recieved == 'd')`+dVal+`();
-        else if(recieved == 'l')`+lVal+`();
-        else if(recieved == 'r')`+rVal+`();
-        else if(recieved == 's')`+sVal+`();
-        else if(recieved == 'sr')`+srVal+`();
-        else if(recieved == 'sl')`+slVal+`();
-        else if(recieved == 'hr')`+hrVal+`();
-    }`
+        Serial.print("\\n");
+    }
+    if(recieved ==      'u')`+uVal+`();  
+    else if(recieved == 'd')`+dVal+`();
+    else if(recieved == 'l')`+lVal+`();
+    else if(recieved == 'r')`+rVal+`();
+    else if(recieved == 's')`+sVal+`();
+    else if(recieved == 'sr')`+srVal+`();
+    else if(recieved == 'sl')`+slVal+`();
+    else if(recieved == 'hr')`+hrVal+`();
+    `
     }else{
         cd = '';
         let sels = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("select");
