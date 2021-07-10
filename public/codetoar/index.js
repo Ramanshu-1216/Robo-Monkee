@@ -164,8 +164,8 @@ float c = 0;
 }`;
 
 var usPins = `    
-#define TRIGGER_PIN 9
-#define ECHO_PIN 10
+#define TRIGGER_PIN 11
+#define ECHO_PIN 12
 `;
 
 var irPins = `
