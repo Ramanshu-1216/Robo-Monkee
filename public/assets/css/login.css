@@ -56,7 +56,7 @@ body {
 form {
   padding: 0 2em;
 }
-.form__input {
+/* .form__input {
   width: 100%;
   border: 0px solid transparent;
   border-radius: 0;
@@ -71,19 +71,21 @@ form {
   border-bottom-color: rgba(203, 43, 94, 1);
   box-shadow: 0 0 5px rgba(0, 80, 80, 0.4);
   border-radius: 4px;
-}
-.btn {
+} */
+.signUp {
   transition: all 0.5s ease;
-  width: 70%;
+  width: 100%;
   border-radius: 30px;
   color: rgba(203, 43, 94, 1);
   font-weight: 600;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   margin-top: 1.5em;
   margin-bottom: 1em;
+  box-shadow: 10px 10px 10px gray;
+  border-radius: 50px;
 }
-.btn:hover,
-.btn:focus {
+.signUp:hover,
+.signUp:focus {
   background-color: rgba(203, 43, 94, 1);
   color: #fff;
 }
