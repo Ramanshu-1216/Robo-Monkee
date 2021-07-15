@@ -348,7 +348,7 @@ Blockly.JavaScript['move_hard_code'] = function(block) {
     if(dropdown_move_dropdown == "stop"){
         dropdown_move_dropdown = "stop_all";
     }
-  var code = "\n\t" + dropdown_move_dropdown + "();\n\tdelay(" + number_delay + ");";
+  var code = "\n\t" + dropdown_move_dropdown + "();\n\tdelay(" + number_delay * 1000 + ");";
   return code;
 };
 
@@ -356,7 +356,7 @@ Blockly.JavaScript['led'] = function(block) {
   var dropdown_led_buzzer = block.getFieldValue('led_buzzer');
   var number_delay = block.getFieldValue('delay');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\t" + dropdown_led_buzzer + "();\n\tdelay(" + number_delay + ");";
+  var code = "\n\t" + dropdown_led_buzzer + "();\n\tdelay(" + number_delay * 1000 + ");";
   return code;
 };
 
