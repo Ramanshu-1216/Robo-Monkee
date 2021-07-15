@@ -31,10 +31,17 @@
       <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <script type="text/javascript" src="bower_components/blockly-colour-gradient/colour-gradient.js"></script>
+      <script src="https://use.fontawesome.com/76f80ffedf.js"></script>
       <!--   --------------------------------------------------------------------------------------------------------------------------------------     -->
   </head>
+  <style>
+    .home-button:hover{
+      color: black;
+    }
+  </style>
   <body onload="auto_save_and_restore_blocks()">
-    <a href="../index.html"><img src="robomonkee.svg"></a>
+    <img src="robomonkee.svg">
+    <a href="../index.html" class="home-button"><i class="fa fa-home home-button" aria-hidden="true" style="position: absolute; bottom: 3rem; left: 1.5rem; font-size: 3rem; color: white; background-color: rgba(0, 0, 0, 0.329); padding: 10px; border-radius: 100%;"></i></a>
     <div id="fakeload"></div>
       <div id="load"></div>
     <div id="sideBar">
