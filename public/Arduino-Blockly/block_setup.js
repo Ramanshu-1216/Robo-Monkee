@@ -596,7 +596,7 @@ Blockly.Blocks['move_hard_code'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Move")
-        .appendField(new Blockly.FieldDropdown([["Left","left"], ["Right","right"], ["Forward","forward"], ["Backward","backward"], ["Spin Left","spin_left"], ["Spin Rigth","spin_right"]]), "move_dropdown")
+        .appendField(new Blockly.FieldDropdown([["Left","left"], ["Right","right"], ["Forward","forward"], ["Backward","backward"], ["Spin Left","spin_left"], ["Spin Rigth","spin_right"], ["Stop","stop"]]), "move_dropdown")
         .appendField("for")
         .appendField(new Blockly.FieldNumber(10, 0), "delay")
         .appendField("seconds");
