@@ -535,14 +535,14 @@ function btController(cnt){
         Serial.print(recieved);
         Serial.print("\\n");
     }
-        if(recieved ==      'u')`+uVal+`();  
-        else if(recieved == 'd')`+dVal+`();
-        else if(recieved == 'l')`+lVal+`();
-        else if(recieved == 'r')`+rVal+`();
-        else if(recieved == 's')`+sVal+`();
-        else if(recieved == 'sr')`+srVal+`();
-        else if(recieved == 'sl')`+slVal+`();
-        else if(recieved == 'hr')`+hrVal+`();
+        if(recieved ==      'F')`+uVal+`();  
+        else if(recieved == 'B')`+dVal+`();
+        else if(recieved == 'L')`+lVal+`();
+        else if(recieved == 'R')`+rVal+`();
+        else if(recieved == 'S')`+sVal+`();
+        else if(recieved == 'I')`+srVal+`();
+        else if(recieved == 'G')`+slVal+`();
+        else if(recieved == 'V')`+hrVal+`();
     `
     }else{
         cd = '';
@@ -583,7 +583,7 @@ function addVoiceControlBlock(){
     // console.log("in");
     var voiceDiv = document.createElement("div");
     voiceDiv.innerHTML = `
-            if(voiceInput == "<input type="text"/>"){
+            if(recieved == "<input type="text"/>"){
                 <select name="functions" > 
                 <option value="forward">forward</option>
                 <option value="reverse">reverse</option>
