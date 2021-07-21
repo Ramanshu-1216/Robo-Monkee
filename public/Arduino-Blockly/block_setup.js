@@ -630,7 +630,7 @@ Blockly.Blocks['voice'] = {
         .appendField("Speak")
         .appendField(new Blockly.FieldTextInput("*Enter Command*"), "NAME")
         .appendField("to")
-        .appendField(new Blockly.FieldDropdown([["Move Left","left"], ["Move Right","right"], ["Move Forward","forward"], ["Move Backward","backward"], ["Turn Around","deg360"], ["Stop","stop"], ["Turn on LED","led"], ["Blow the buzzer","buzzer"]]), "move_dropdown");
+        .appendField(new Blockly.FieldDropdown([["Move Left","left"], ["Move Right","right"], ["Move Forward","forward"], ["Move Backward","backward"], ["Spin Left","spin_left"], ["Spin Right","spin_right"], ["Stop","stop"]]), "move_dropdown");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#FCC300");
