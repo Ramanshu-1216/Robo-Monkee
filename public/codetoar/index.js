@@ -188,7 +188,7 @@ var motorPins = `
 
 var functions = `
 void forward(){
-    Serial.print("Forwards Triggered");
+    Serial.print("Forward triggered");
     digitalWrite(RM1,HIGH);
     digitalWrite(RM2,LOW);
     analogWrite(EN2,SP_EN2);
@@ -197,8 +197,8 @@ void forward(){
     analogWrite(EN1,SP_EN1);   
 }
 
-void right(){
-    Serial.print("Right Triggered");
+void left(){
+    Serial.print("Left triggered");
     digitalWrite(RM1,LOW);
     digitalWrite(RM2,LOW);
     analogWrite(EN2,0);
@@ -207,8 +207,8 @@ void right(){
     analogWrite(EN1,SP_EN1);
 }
 
-void left(){
-    Serial.print("Right Triggered");
+void right(){
+    Serial.print("Right triggered");
     digitalWrite(RM1,HIGH);
     digitalWrite(RM2,LOW);
     analogWrite(EN2,SP_EN2);
@@ -218,7 +218,7 @@ void left(){
 }
 
 void deg360(){
-    Serial.print("Right Triggered");
+    Serial.print("deg360 triggered");
     digitalWrite(RM1,HIGH);
     digitalWrite(RM2,LOW);
     analogWrite(EN2,SP_EN2);
@@ -228,7 +228,7 @@ void deg360(){
 }
 
 void reverse(){
-    Serial.print("Reverse Triggered");
+    Serial.print("Reverse triggered");
     digitalWrite(RM1,LOW);
     digitalWrite(RM2,HIGH);
     analogWrite(EN2,SP_EN2);
@@ -238,7 +238,7 @@ void reverse(){
 }
 
 void stop(){
-    Serial.print("Right Triggered");
+    Serial.print("Stop triggered");
     digitalWrite(RM1,LOW);
     digitalWrite(RM2,LOW);
     digitalWrite(LM1,LOW);
@@ -283,8 +283,8 @@ function irReads(){
     `+ (comment ? "//" : "") + `S5 = digitalRead(IR5);`;
 }
 function allFunctions() {
-    piece = `float SP_EN1 = ` + (vSP_EN1=="0"?"20":vSP_EN1) + `;
-float SP_EN2 = `+ (vSP_EN2=="0"?"20":vSP_EN2) + `;`;
+    piece = `float SP_EN1 = ` + (vSP_EN1=="0"?"200":vSP_EN1) + `;
+float SP_EN2 = `+ (vSP_EN2=="0"?"200":vSP_EN2) + `;`;
 
     return piece + functions;
 }
@@ -535,14 +535,14 @@ function btController(cnt){
         Serial.print(recieved);
         Serial.print("\\n");
     }
-        if(recieved ==      'u')`+uVal+`();  
-        else if(recieved == 'd')`+dVal+`();
-        else if(recieved == 'l')`+lVal+`();
-        else if(recieved == 'r')`+rVal+`();
-        else if(recieved == 's')`+sVal+`();
-        else if(recieved == 'sr')`+srVal+`();
-        else if(recieved == 'sl')`+slVal+`();
-        else if(recieved == 'hr')`+hrVal+`();
+        if(recieved ==      'F')`+uVal+`();  
+        else if(recieved == 'B')`+dVal+`();
+        else if(recieved == 'L')`+lVal+`();
+        else if(recieved == 'R')`+rVal+`();
+        else if(recieved == 'S')`+sVal+`();
+        else if(recieved == 'I')`+srVal+`();
+        else if(recieved == 'G')`+slVal+`();
+        else if(recieved == 'V')`+hrVal+`();
     `
     }else{
         cd = '';
@@ -562,8 +562,8 @@ function btCodeHandler() {
 
     code = motorPins+`
     
-    float SP_EN1 = 20;
-    float SP_EN2 = 20; 
+    float SP_EN1 = 200;
+    float SP_EN2 = 200; 
     `+functions+`
     char recieved = 's';
     
@@ -583,7 +583,7 @@ function addVoiceControlBlock(){
     // console.log("in");
     var voiceDiv = document.createElement("div");
     voiceDiv.innerHTML = `
-            if(voiceInput == "<input type="text"/>"){
+            if(recieved == "<input type="text"/>"){
                 <select name="functions" > 
                 <option value="forward">forward</option>
                 <option value="reverse">reverse</option>
@@ -668,8 +668,8 @@ function handlePlaygroundChanges(){
 
     code = `
     `+motorPins+`
-float SP_EN1 = 20;
-float SP_EN2 = 20; 
+float SP_EN1 = 200;
+float SP_EN2 = 200; 
     `+functions+`
 void setup(){
     Serial.begin(9600);
