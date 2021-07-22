@@ -202,7 +202,7 @@ Blockly.JavaScript['remote'] = function(block) {
   var value_button_set_1 = Blockly.JavaScript.valueToCode(block, 'button_set_1', Blockly.JavaScript.ORDER_NONE);
   var value_button_set_2 = Blockly.JavaScript.valueToCode(block, 'button_set_2', Blockly.JavaScript.ORDER_NONE);
   // TODO: Assemble JavaScript into code variable.
-  var code = "\nvoid loop()\n{\n\tString message;\n\tif(Serial.available() > 0)\n\t{\n\t// Checks whether data is comming from the serial port\n\t\tmessage = Serial.read(); // Reads the data from the serial port\n\t}\n\t//REMOTE CODE" + value_button_set_1 + value_button_set_2 + "\n \n\tif(message != 'F' && message != 'L' && message != 'R' && message != 'B' && message != 'W' && message != 'button_6' && message != 'V' && message != 'button_8')\n\t{\n\t\tstop_all();\n\t}\n\n}\n";
+  var code = "\nvoid loop()\n{\n\tString message;\n\tif(Serial.available() > 0)\n\t{\n\t// Checks whether data is comming from the serial port\n\t\tmessage = Serial.read(); // Reads the data from the serial port\n\t}\n\t//REMOTE CODE" + value_button_set_1 + value_button_set_2 + "\n\n}\n";
   return code;
 };
 
