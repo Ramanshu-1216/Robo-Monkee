@@ -564,19 +564,24 @@ function btController(cnt){
     `
     }else{
         cd = `
-        if(Serial.available() > 0){
-            recieved = Serial.read();
-            Serial.print(recieved);
-            Serial.print("\\n");
-        }
+        while (Serial.available()){ //Check if there is an available byte to read
+            delay(10); //Delay added to make thing stable 
+            char c = Serial.read(); //Conduct a serial read
+            if (c == '#') {break;} //Exit the loop when the # is detected after the word
+              voice += c; //Shorthand for voice = voice + c
+          }
+        if(voice.length() > 0){
         `;
         let sels = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("select");
         let ips = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("input");
         for(let i=0; i<sels.length; i++){
-            cd+=(i==0?"":"else ")+`if(recieved == "`+ips[i].value+`"){
+            cd+=(i==0?"":"else ")+`if(voice == "*`+ips[i].value.toLocaleLowerCase()+`"){
             `+sels[i].options[sels[i].selectedIndex].text+`();
         }`;
         }
+        cd += `
+        voice = "";
+        }`
     }
     // console.log(cd);
     btCodeHandler();
@@ -590,7 +595,7 @@ function btCodeHandler() {
     float SP_EN2 = 200; 
     `+functions+`
     char recieved = 's';
-    
+    String voice;
     void setup(){
         Serial.begin(9600);
         `+motorAndEnablesSetup+`
@@ -607,7 +612,7 @@ function addVoiceControlBlock(){
     // console.log("in");
     var voiceDiv = document.createElement("div");
     voiceDiv.innerHTML = `
-            if(recieved == "<input type="text"/>"){
+            if(voice == "<input type="text"/>"){
                 <select name="functions" > 
                 <option value="forward">forward</option>
                 <option value="reverse">reverse</option>
