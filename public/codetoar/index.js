@@ -588,11 +588,13 @@ function btController(cnt){
 }
 
 function btCodeHandler() {
-
+    let spen1 = document.getElementById("SP_EN1bt").value;
+    let spen2 = document.getElementById("SP_EN2bt").value;
+    
     code = motorPins+`
     
-    float SP_EN1 = 200;
-    float SP_EN2 = 200; 
+    float SP_EN1 = ${spen1};
+    float SP_EN2 = ${spen2}; 
     `+functions+`
     char recieved = 's';
     String voice;
@@ -693,11 +695,13 @@ function getPgData(){
 }
 function handlePlaygroundChanges(){
     loopContent = getPgData();
+    let spen1 = document.getElementById("SP_EN1pg").value;
+    let spen2 = document.getElementById("SP_EN2pg").value;
 
     code = `
     `+motorPins+`
-float SP_EN1 = 200;
-float SP_EN2 = 200; 
+float SP_EN1 = ${spen1};
+float SP_EN2 = ${spen2}; 
     `+functions+`
 void setup(){
     Serial.begin(9600);
