@@ -549,7 +549,7 @@ function btController(cnt){
         let sels = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("select");
         let ips = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("input");
         for(let i=0; i<sels.length; i++){
-            cd+=(i==0?"":"else ")+`if(voiceInput == "`+ips[i].value+`"){
+            cd+=(i==0?"":"else ")+`if(recieved == "`+ips[i].value+`"){
             `+sels[i].options[sels[i].selectedIndex].text+`();
         }`;
         }
