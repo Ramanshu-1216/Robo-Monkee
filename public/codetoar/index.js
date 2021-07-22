@@ -217,8 +217,8 @@ void left(){
     analogWrite(EN1,0);
 }
 
-void spin_left(){
-	Serial.print("Spin Left Triggered");
+void spin_right(){
+	Serial.print("Spin Right Triggered");
 	digitalWrite(RM1,LOW);
 	digitalWrite(RM2,HIGH);
 	analogWrite(EN2,SP_EN2);
@@ -228,8 +228,8 @@ void spin_left(){
 }
 
 
-void spin_right(){
-	Serial.print("Spin Right Triggered");
+void spin_left(){
+	Serial.print("Spin Left Triggered");
 	digitalWrite(RM1,HIGH);
 	digitalWrite(RM2,LOW);
 	analogWrite(EN2,SP_EN2);
