@@ -31,10 +31,19 @@
       <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <script type="text/javascript" src="bower_components/blockly-colour-gradient/colour-gradient.js"></script>
+      <script src="https://use.fontawesome.com/76f80ffedf.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <!--   --------------------------------------------------------------------------------------------------------------------------------------     -->
   </head>
+  
+  <style>
+    .home-button:hover{
+      color: black;
+    }
+  </style>
   <body onload="auto_save_and_restore_blocks()">
-    <a href="https://robomonkee.com/"><img src="robomonkee.svg"></a>
+    <img src="robomonkee.svg">
+    <a href="../index.html" class="home-button"><i class="fa fa-home home-button" aria-hidden="true" style="position: absolute; bottom: 3rem; left: 1.5rem; font-size: 3rem; color: white; background-color: rgba(0, 0, 0, 0.329); padding: 10px; border-radius: 100%;"></i></a>
     <div id="fakeload"></div>
       <div id="load"></div>
     <div id="sideBar">
@@ -810,21 +819,15 @@
                       <next>
                         <block type="voice">
                           <field name="NAME">*Enter Command*</field>
-                          <field name="move_dropdown">deg360</field>
+                          <field name="move_dropdown">spin_left</field>
                           <next>
                             <block type="voice">
                               <field name="NAME">*Enter Command*</field>
-                              <field name="move_dropdown">stop</field>
+                              <field name="move_dropdown">spin_right</field>
                               <next>
                                 <block type="voice">
                                   <field name="NAME">*Enter Command*</field>
-                                  <field name="move_dropdown">led</field>
-                                  <next>
-                                    <block type="voice">
-                                      <field name="NAME">*Enter Command*</field>
-                                      <field name="move_dropdown">buzzer</field>
-                                    </block>
-                                  </next>
+                                  <field name="move_dropdown">stop</field>
                                 </block>
                               </next>
                             </block>
@@ -873,7 +876,7 @@
                               <field name="move_dropdown">spin_right</field>
                               <field name="delay">10</field>
                               <next>
-                                <block type="led">
+                                <!-- <block type="led">
                                   <field name="led_buzzer">led</field>
                                   <field name="delay">2</field>
                                   <next>
@@ -882,7 +885,7 @@
                                       <field name="delay">2</field>
                                     </block>
                                   </next>
-                                </block>
+                                </block> -->
                               </next>
                             </block>
                           </next>
@@ -902,14 +905,15 @@
       <field name="move_dropdown">left</field>
       <field name="delay">10</field>
     </block>
-    <block type="led">
+    <!-- <block type="led">
       <field name="led_buzzer">led</field>
       <field name="delay">2</field>
-    </block>
+    </block> -->
   </category>
 </xml>
       </div>
     </div>
+   
     <script>
       var toolbox = document.getElementById("toolbox");
       
@@ -957,4 +961,17 @@
       Blockly.Xml.domToWorkspace(workspaceBlocks, workspace);
     </script>
       <script type="text/javascript" src="bower_components/blockly-colour-gradient/colour-gradient.js"></script>
+      <script>
+        jQuery(document).keydown(function(event) {
+            // If Control or Command key is pressed and the S key is pressed
+            // run save function. 83 is the key code for S.
+            if((event.ctrlKey || event.metaKey) && event.which == 83) {
+                // Save Function
+                event.preventDefault();
+                showcode();
+                return false;
+            }
+        }
+    );
+    </script>
   </body>

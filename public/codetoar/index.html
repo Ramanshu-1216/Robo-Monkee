@@ -214,7 +214,7 @@ void loop(){
             <div id="bluetoothBtnController" class="show"> 
             // recieved is a variable in which serial data obtained from bluetooth controller is stored
 
-            if(recieved == 'u'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/up-arrow.png"/></span></div>){
+            if(recieved == 'F'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/up-arrow.png"/></span></div>){
                 <select name="functions" id="btControlsU"> 
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -226,7 +226,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 'd'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/down-arrow.png"/></span></div>){
+            else if(recieved == 'B'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/down-arrow.png"/></span></div>){
                 <select name="functions" id="btControlsD" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -238,7 +238,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 'r'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/left-arrow.png"/></span></div>){
+            else if(recieved == 'L'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/left-arrow.png"/></span></div>){
                 <select name="functions" id="btControlsL" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -250,7 +250,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 'l'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/right-arrow.png"/></span></div>){
+            else if(recieved == 'R'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/right-arrow.png"/></span></div>){
                 <select name="functions" id="btControlsR" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -262,7 +262,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 's'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/stop.png"/></span></div>){
+            else if(recieved == 'S'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/stop.png"/></span></div>){
                 <select name="functions" id="btControlsS" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -274,7 +274,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 'sl'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-left.png"/></span></div>){
+            else if(recieved == 'I'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-left.png"/></span></div>){
                 <select name="functions" id="btControlsSL" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -286,7 +286,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 'sr'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-right.png"/></span></div>){
+            else if(recieved == 'G'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-right.png"/></span></div>){
                 <select name="functions" id="btControlsSR" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -298,7 +298,7 @@ void loop(){
                     <option value="stop">horn</option>
                 </select>();
             }
-            else if(recieved == 'horn'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-right.png"/></span></div>){
+            else if(recieved == 'V'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-right.png"/></span></div>){
                 <select name="functions" id="btControlsHR" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
@@ -314,7 +314,7 @@ void loop(){
             <div id="bluetoothVoiceController" class="hide"><div id="bluetoothVoiceBlock">
             // voiceInput is a variable in which serial data (whatever you'll say on mic) obtained from bluetooth controller is stored
 
-            if(voiceInput == "<input type="text"/>"){
+            if(recieved == "<input type="text"/>"){
                 <select name="functions" > 
                 <option value="forward">forward</option>
                 <option value="reverse">reverse</option>

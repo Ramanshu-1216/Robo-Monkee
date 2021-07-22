@@ -168,10 +168,198 @@ nav{
           100% {transform: rotate(0deg);} */
           /* 100% {transform: rotate(-30deg);} */
         }
+
+        @keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+      /* .blur{
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+      } */
+      /* .overlay{
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
+      } */
+
+      .container, .container2 {
+          /* -webkit-backdrop-filter: blur(10px); */
+          /* backdrop-filter: blur(10px); */
+          background-color: rgba(255, 255, 255, 0.9);  
+          /* filter: blur(8px);
+        -webkit-filter: blur(8px); */
+        }
+      /* @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+        
+      } */
+
+      .headingBill{
+        color: grey;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+
+      .legend{
+        color: grey;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+      .field-left{
+        border: none;
+        border-radius: 4px;
+        margin-right: 6px;;
+        box-shadow: 0 0 4px  grey;
+        font-size: 1rem;
+        padding: 4px;
+      }
+      .field-right{
+        border: none;
+        border-radius: 4px;
+        margin-left: 6px;
+        box-shadow: 0 0 4px  grey;
+        font-size: 1rem;
+        padding: 4px;
+      }
+
+      .input-field:focus{
+        border-color: rgb(199 74 98);
+      }
+
+      .field-full{
+        border: none;
+        border-radius: 4px;
+        /* margin: 0 10px 10 10px; */
+        box-shadow: 0 0 4px  grey;
+        font-size: 1rem;
+        padding: 4px;
+        width: 96%;
+      }
+
+      .bottom-margin-div{
+        margin-bottom: 4%;
+      }
+
+      .close-btn:hover{
+        background-color: indianred !important;
+        color: white;
+      }
       </style>
     </head>
-    
+    <!-- animation: fadein 2s; -moz-animation: fadein 2s;
+        -webkit-animation: fadein 2s;
+        -o-animation: fadein 2s;" -->
     <body>
+      <!-- <div class="overlay" style="background-color: rgba(0, 0, 0, 0.3); width: 100%; height: 100vh; z-index: 1; position: absolute; display: block; visibility: hidden; top: 0;">
+        <div class="close-btn btn" style="position: absolute; right: 7%; top: 10%; background-color: white; border-radius: 50%; width: 40px; height: 40px; box-shadow: 0 0 2 gray;">
+          X
+        </div>
+        <div class="container" style="width: 35%; float: right; margin: auto; top: 110px; position: relative; margin: auto 12.5%; border-radius: 15px; box-shadow: 0 0 10px rgb(90, 90, 90); ">
+        <div style="padding: 35px 25px;">
+          <p style="font-weight: bold; font-size: 1.3rem;">Shiping Details:</p>
+          <hr>
+          <form action="">
+            <div class="inline bottom-margin-div" style="display: inline-flex;">
+              <div class="left-name" style="width: 50%; display: inline-block;">
+                <p class="legend">First Name</p>
+                <input required type="text" name="first_name" id="first_name" style="width: 90%;" class="field-left input-field">
+              </div>
+              <div class="right-name" style="width: 50%; display: inline-block;">
+                <p class="legend" style="margin-left: 6px;">Last Name</p>
+                <input required type="text" name="last_name" id="last_name" style="width: 90%;" class="field-right">
+              </div>
+            </div>
+            <div class="inline bottom-margin-div" style="display: inline-flex;">
+              <div class="left-name" style="width: 50%; display: inline-block;">
+                <p class="legend">Email</p>
+                <input required type="email" name="email" id="email" style="width: 90%;" class="field-left input-field">
+              </div>
+              <div class="right-name" style="width: 50%; display: inline-block;">
+                <p class="legend" style="margin-left: 6px;">Phone Number</p>
+                <input required type="tel" name="phone_number" id="phone_number" style="width: 90%;" class="field-right">
+              </div>
+            </div>
+            <div class="bottom-margin-div">
+              <p class="legend">Address Line 1</p>
+              <input required type="text" name="address_line_1" id="address_line_1" class="field-full">
+            </div>
+            <div class="bottom-margin-div">
+              <p class="legend">Address Line 2</p>
+              <input required type="text" name="address_line_2" id="address_line_2" class="field-full">
+            </div>
+            <div class="inline bottom-margin-div" style="display: inline-flex;">
+              <div class="left-name" style="width: 50%; display: inline-block;">
+                <p class="legend">City</p>
+                <input required type="text" name="city" id="city" style="width: 90%;" class="field-left input-field">
+              </div>
+              <div class="right-name" style="width: 50%; display: inline-block;">
+                <p class="legend" style="margin-left: 6px;">Postal Code</p>
+                <input required type="number" name="postal_code" id="postal_code" style="width: 90%;" class="field-right">
+              </div>
+            </div>
+            <div class="inline bottom-margin-div" style="display: inline-flex;">
+              <div class="left-name" style="width: 50%; display: inline-block;">
+                <p class="legend">State</p>
+                <input required type="text" name="state" id="state" style="width: 90%;" class="field-left input-field">
+              </div>
+              <div class="right-name" style="width: 50%; display: inline-block;">
+                <p class="legend" style="margin-left: 6px;">Country</p>
+                <input required type="text" name="country" id="country" style="width: 90%;" class="field-right">
+              </div>
+            </div>
+            <div class="bottom-margin-div" style="width: 100%; text-align: center; margin-top: 7%;">
+            <input required type="submit" value="Proceed to Checkout" class="btn btn-success" id="rzp-button1" style="padding-left: 30px; padding-right: 30px; margin-bottom: 60px;">
+            </div>
+          </form>
+        </div>
+        </div>
+        <div style="width: 50%; height: auto;">
+          <div class="container2" style="width: 35%; position: absolute; border-radius: 15px; box-shadow: 0 0 10px rgb(90, 90, 90); max-width: 498px; right: 53.5%;
+          top: 550px;">
+            <div style="padding: 25px 35px;">
+              <p style="font-size: 0.7rem; color: grey;">Your Order: </p>
+              <hr> -->
+              <!-- <p style="color: grey; font-size: 0.7rem; padding-bottom: 0; margin-bottom: 0;" >Item:</p> -->
+              <!-- <p style="font-weight: 600;">Leo - The Programmable Bot</p>
+              <span style="color: grey;">Color: </span><span>White</span>
+              <span style="float: right;"><span style="color: grey;">Quantity: </span> <span>1</span></span>
+              <hr>
+              <p class="headingBill"><span> Bot Hardware: </span><span style="float: right;">₹3999</span></p>
+              <p class="headingBill"><span style="color: grey;">Video Lectures: </span> <span style="float: right;">₹2999</span></p>
+              <p class="headingBill"><span>Delivery:</span><span style="float: right;">₹0</span></p>
+              <hr>
+              <p style="font-weight: bold; margin-top: 0;"><span>Total: </span><span style="float: right;">₹6998</span></p>
+            </div>
+          </div>
+        </div>
+      </div> -->
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand text-light" href="./index.html">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -292,6 +480,8 @@ nav{
                     <div class="qtyplus">+</div>
                 </form>
                 <a href="#" onClick="checkUser(true);" class="round-black-btn" style="box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;">BUY</a>
+                <button class="round-black-btn buy-btn" style="outline: none; box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;"><a href="#buy-card" style="text-decoration: none; color: white;">BUY</a></button>
+                <!-- <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HTz3N6RXV8GhrY" async> </script> </form> -->
                   </div>
                 </div>
               </div>
@@ -606,7 +796,7 @@ nav{
         </section>
        
         <!-- <div style="background-color: rgb(73, 73, 95);height: 30vh;">  -->
-                  <div class="card-deck" style="padding-top: 0%; align-items: center;align-self: center;align-content: center;margin-left: 30%;margin-right: 30%; padding-bottom: 2%;">
+                  <div id="buy-card" class="card-deck" style="padding-top: 0%; align-items: center;align-self: center;align-content: center;margin-left: 30%;margin-right: 30%; padding-bottom: 2%;">
           <div class="card"  style="border: 0em;max-width: 1000px;border-radius: 40px; background-color: #212529">
             <div class="card-body" style="width: 100%; ">
              
@@ -703,11 +893,72 @@ nav{
       }
     }
   </script>
-  <script>var viewMode = getCookie("view-mode");
+  <script>
+  var viewMode = getCookie("view-mode");
     if(viewMode == "desktop"){
         viewport.setAttribute('content', 'width=1024');
     }else if (viewMode == "mobile"){
         viewport.setAttribute('content', 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
     }</script>
+
+<!-- <button id="rzp-button1">Pay</button> -->
+<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_9DfoyTA9DwSMAe", // Enter the Key ID generated from the Dashboard
+    "amount": 6999 * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Robo Monkee",
+    "description": "Test Transaction",
+    "image": "https://robomonkee.com/assets/images/clipart/robomonkee.png",
+    // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script> -->
+
+<script>
+  var buyBtn = document.querySelector(".buy-btn");
+  buyBtn.addEventListener("click", function () {
+    document.querySelector(".overlay").style.visibility = "visible";
+    document.querySelector("body").style.overflow = "hidden";
+    // document.querySelector("body").classList.add("blur");
+    document.querySelector("#slider").style.boxShadow = "0 0 30px white";
+    // $(".container").delay(1000).animate({ opacity: 1 }, 700);​
+  });
+  document.querySelector(".close-btn").addEventListener("click", function(){
+    document.querySelector(".overlay").style.visibility = "hidden";
+    document.querySelector("body").style.overflow = "visible";
+    document.querySelector("#slider").style.boxShadow = "none"
+  })
+</script>
   </body>
 </html>
