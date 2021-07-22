@@ -545,7 +545,13 @@ function btController(cnt){
         else if(recieved == 'V')`+hrVal+`();
     `
     }else{
-        cd = '';
+        cd = `
+        if(Serial.available() > 0){
+            recieved = Serial.read();
+            Serial.print(recieved);
+            Serial.print("\\n");
+        }
+        `;
         let sels = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("select");
         let ips = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("input");
         for(let i=0; i<sels.length; i++){
