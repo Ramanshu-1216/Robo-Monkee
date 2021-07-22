@@ -217,6 +217,27 @@ void left(){
     analogWrite(EN1,0);
 }
 
+void spin_left(){
+	Serial.print("Spin Left Triggered");
+	digitalWrite(RM1,LOW);
+	digitalWrite(RM2,HIGH);
+	analogWrite(EN2,SP_EN2);
+	digitalWrite(LM1,HIGH);
+	digitalWrite(LM2,LOW);
+	analogWrite(EN1,SP_EN1);
+}
+
+
+void spin_right(){
+	Serial.print("Spin Right Triggered");
+	digitalWrite(RM1,HIGH);
+	digitalWrite(RM2,LOW);
+	analogWrite(EN2,SP_EN2);
+	digitalWrite(LM1,LOW);
+	digitalWrite(LM2,HIGH);
+	analogWrite(EN1,SP_EN1);
+}
+
 void deg360(){
     Serial.print("deg360 triggered");
     digitalWrite(RM1,HIGH);
@@ -482,18 +503,18 @@ function handleBtChanges() {
     r = document.getElementById('btControlsR');
     l = document.getElementById('btControlsL');
     s = document.getElementById('btControlsS');
-    sr = document.getElementById('btControlsSR');
-    sl = document.getElementById('btControlsSL');
-    hr = document.getElementById('btControlsHR');
+    // sr = document.getElementById('btControlsSR');
+    // sl = document.getElementById('btControlsSL');
+    // hr = document.getElementById('btControlsHR');
 
     uVal = u.options[u.selectedIndex].text;
     dVal = d.options[d.selectedIndex].text;
     rVal = r.options[r.selectedIndex].text;
     lVal = l.options[l.selectedIndex].text;
     sVal = s.options[s.selectedIndex].text;
-    srVal = sr.options[sr.selectedIndex].text;
-    slVal = sl.options[sl.selectedIndex].text;
-    hrVal = hr.options[hr.selectedIndex].text;
+    // srVal = sr.options[sr.selectedIndex].text;
+    // slVal = sl.options[sl.selectedIndex].text;
+    // hrVal = hr.options[hr.selectedIndex].text;
 
 
     // vIP1 = document.getElementById('vIP1').value;
@@ -540,9 +561,6 @@ function btController(cnt){
         else if(recieved == 'L')`+lVal+`();
         else if(recieved == 'R')`+rVal+`();
         else if(recieved == 'S')`+sVal+`();
-        else if(recieved == 'I')`+srVal+`();
-        else if(recieved == 'G')`+slVal+`();
-        else if(recieved == 'V')`+hrVal+`();
     `
     }else{
         cd = `
@@ -596,9 +614,8 @@ function addVoiceControlBlock(){
                 <option value="left">left</option>
                 <option value="right">right</option>
                 <option value="stop">stop</option>
-                <option value="stop">spin right</option>
-                <option value="stop">spin left</option>
-                <option value="stop">horn</option>
+                <option value="stop">spin_right</option>
+                <option value="stop">spin_left</option>
                 </select>();
             }<button onclick="deleteVoiceBlock(this)">-</button>
     `;
