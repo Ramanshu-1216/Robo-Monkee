@@ -202,7 +202,7 @@ Blockly.JavaScript['remote'] = function(block) {
   var value_button_set_1 = Blockly.JavaScript.valueToCode(block, 'button_set_1', Blockly.JavaScript.ORDER_NONE);
   var value_button_set_2 = Blockly.JavaScript.valueToCode(block, 'button_set_2', Blockly.JavaScript.ORDER_NONE);
   // TODO: Assemble JavaScript into code variable.
-  var code = "\nvoid loop()\n{\n\tString message = '';\n\tif(Serial.available() > 0)\n\t{\n\t// Checks whether data is comming from the serial port\n\t\tmessage = Serial.read(); // Reads the data from the serial port\n\t}\n\t//REMOTE CODE" + value_button_set_1 + value_button_set_2 + "\n\n}\n";
+  var code = "\nvoid loop()\n{\n\tif(Serial.available() > 0){\n\t\trecieved = Serial.read();\n\t\tSerial.println(recieved);\n\t}\n}\n\t//REMOTE CODE" + value_button_set_1 + value_button_set_2 + "\n\n}\n";
   return code;
 };
 
@@ -246,7 +246,7 @@ Blockly.JavaScript['button_horizontal_slot_2'] = function(block) {
 Blockly.JavaScript['remote_option_1'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'F')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  var code = "\n\tif(recieved == 'F') " + dropdown_options_dropdown + ";";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -254,7 +254,7 @@ Blockly.JavaScript['remote_option_1'] = function(block) {
 Blockly.JavaScript['remote_option_2'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'R')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  var code = "\n\tif(recieved == 'R') " + dropdown_options_dropdown + ";";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -262,7 +262,7 @@ Blockly.JavaScript['remote_option_2'] = function(block) {
 Blockly.JavaScript['remote_option_3'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'B')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  var code = "\n\tif(recieved == 'B') " + dropdown_options_dropdown + ";";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -270,7 +270,7 @@ Blockly.JavaScript['remote_option_3'] = function(block) {
 Blockly.JavaScript['remote_option_4'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'L')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  var code = "\n\tif(recieved == 'L') " + dropdown_options_dropdown + ";";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -278,7 +278,7 @@ Blockly.JavaScript['remote_option_4'] = function(block) {
 Blockly.JavaScript['remote_option_5'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'W')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  var code = "\n\tif(recieved == 'S') stop_all();";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -286,7 +286,8 @@ Blockly.JavaScript['remote_option_5'] = function(block) {
 Blockly.JavaScript['remote_option_6'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'button_6')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  // var code = "\n\t// if(recieved == 'S') stop();";
+  var code = "";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -294,7 +295,8 @@ Blockly.JavaScript['remote_option_6'] = function(block) {
 Blockly.JavaScript['remote_option_7'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'V')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  // var code = "\\n\t// if(recieved == 'S') stop();";
+  var code = "";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
@@ -302,7 +304,8 @@ Blockly.JavaScript['remote_option_7'] = function(block) {
 Blockly.JavaScript['remote_option_8'] = function(block) {
   var dropdown_options_dropdown = block.getFieldValue('options_dropdown');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\n\tif(message == 'button_8')\n\t{\n\t\t" + dropdown_options_dropdown + ";\n\t}\n";
+  // var code = "\n\tif(recieved == 'S') stop();";
+  var code = "";
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_COMMA];
 };
