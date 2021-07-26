@@ -165,8 +165,7 @@ float c = 0;
 
 var usPins = `    
 #define TRIGGER_PIN 11
-#define ECHO_PIN 12
-`;
+#define ECHO_PIN 12`;
 
 var irPins = `
 #define IR1 A1
@@ -175,8 +174,7 @@ var irPins = `
 #define IR4 A4
 #define IR5 A5
 
-int S1=0, S2=0, S3=0, S4=0, S5=0;
-`;
+int S1=0, S2=0, S3=0, S4=0, S5=0;`;
 
 var motorPins = `
 #define EN2 3
@@ -218,24 +216,23 @@ void left(){
 }
 
 void spin_right(){
-	Serial.print("Spin Right Triggered");
-	digitalWrite(RM1,LOW);
-	digitalWrite(RM2,HIGH);
-	analogWrite(EN2,SP_EN2);
-	digitalWrite(LM1,HIGH);
-	digitalWrite(LM2,LOW);
-	analogWrite(EN1,SP_EN1);
+    Serial.print("Spin Right Triggered");
+    digitalWrite(RM1,LOW);
+    digitalWrite(RM2,HIGH);
+    analogWrite(EN2,SP_EN2);
+    digitalWrite(LM1,HIGH);
+    digitalWrite(LM2,LOW);
+    analogWrite(EN1,SP_EN1);
 }
 
-
 void spin_left(){
-	Serial.print("Spin Left Triggered");
-	digitalWrite(RM1,HIGH);
-	digitalWrite(RM2,LOW);
-	analogWrite(EN2,SP_EN2);
-	digitalWrite(LM1,LOW);
-	digitalWrite(LM2,HIGH);
-	analogWrite(EN1,SP_EN1);
+    Serial.print("Spin Left Triggered");
+    digitalWrite(RM1,HIGH);
+    digitalWrite(RM2,LOW);
+    analogWrite(EN2,SP_EN2);
+    digitalWrite(LM1,LOW);
+    digitalWrite(LM2,HIGH);
+    analogWrite(EN1,SP_EN1);
 }
 
 void deg360(){
@@ -268,43 +265,40 @@ void stop(){
     analogWrite(EN2,0);
 }
 `;
-var motorAndEnablesSetup = `
-// MOTOR AND ENABLES
-pinMode (RM1, OUTPUT);
-pinMode (RM2, OUTPUT);
-pinMode (LM1, OUTPUT);
-pinMode (LM2, OUTPUT);
-pinMode (EN1, OUTPUT);
-pinMode (EN2, OUTPUT);
-`;
+var motorAndEnablesSetup = `    
+    // MOTOR AND ENABLES
+    pinMode (RM1, OUTPUT);
+    pinMode (RM2, OUTPUT);
+    pinMode (LM1, OUTPUT);
+    pinMode (LM2, OUTPUT);
+    pinMode (EN1, OUTPUT);
+    pinMode (EN2, OUTPUT);`;
 var irSetup = `
-// IR ARRAY
-pinMode (IR1, INPUT);
-pinMode (IR2, INPUT);
-pinMode (IR3, INPUT);
-pinMode (IR4, INPUT);
-pinMode (IR5, INPUT);
-`;
+    // IR ARRAY
+    pinMode (IR1, INPUT);
+    pinMode (IR2, INPUT);
+    pinMode (IR3, INPUT);
+    pinMode (IR4, INPUT);
+    pinMode (IR5, INPUT);`;
 var usSetup = `
-// ULTRASONIC SENSOR
-pinMode(ECHO_PIN,INPUT);
-pinMode(TRIGGER_PIN,OUTPUT);
-`;
+    // ULTRASONIC SENSOR
+    pinMode(ECHO_PIN,INPUT);
+    pinMode(TRIGGER_PIN,OUTPUT);`;
 var ledBlink = `
-digitalWrite(LED_BUILDIN,HIGH);
-delay(1000);
-digitalWrite(LED_BUILDIN,LOW);
-delay(1000);
-`;
+    digitalWrite(LED_BUILDIN,HIGH);
+    delay(1000);
+    digitalWrite(LED_BUILDIN,LOW);
+    delay(1000);`;
 function irReads(){
-    return (comment ? "//" : "") + `S1 = digitalRead(IR1);
-	S2 = digitalRead(IR2);
-	S3 = digitalRead(IR3);
-	S4 = digitalRead(IR4);
-    `+ (comment ? "//" : "") + `S5 = digitalRead(IR5);`;
+    return ((comment ? "//" : "") + `S1 = digitalRead(IR1);
+    S2 = digitalRead(IR2);
+    S3 = digitalRead(IR3);
+    S4 = digitalRead(IR4);
+    `+ (comment ? "//" : "") + `S5 = digitalRead(IR5);`);
 }
 function allFunctions() {
-    piece = `float SP_EN1 = ` + (vSP_EN1=="0"?"200":vSP_EN1) + `;
+    piece = `
+float SP_EN1 = ` + (vSP_EN1=="0"?"200":vSP_EN1) + `;
 float SP_EN2 = `+ (vSP_EN2=="0"?"200":vSP_EN2) + `;`;
 
     return piece + functions;
@@ -332,12 +326,10 @@ function handleOnChange() {
 
     checkIfValues();
 
-    usBlock = `if(dist()<` + vDist + `){
-            `+ vFnUS + `();
-            delay(10);
-        }else{
-            forward();
-        }`;
+    usBlock = `if(dist()<` + vDist + `) {
+        `+ vFnUS + `();
+        delay(10);
+    } else {`;
     changeArduino();
 }
 function stringify() {
@@ -363,16 +355,16 @@ void setup(){
 }
 `+ (visibleUS ? usDistFunction : "") + `
 void loop(){
-    `+ (!visibleUS && !visibleIR ? ledBlink : "") + `
+    `+ (!visibleUS && !visibleIR ? ledBlink : '') + `
+    `+ (visibleUS ? usBlock : '') + `
+    `+ (visibleIR ?irReads()+`
 
-    `+ (visibleUS ? usBlock : "") + `
-    `+ (visibleIR ? irReads()+`
-
-	if(S1 == `+ vS1if0 + ` and S2 == ` + vS2if0 + ` and S3 == ` + vS3if0 + ` and S4 == ` + vS4if0 + ` and S5 == ` + vS5if0 + `){
-            `+ vFnif0 + `();
-	}
+    if(S1 == `+ vS1if0 + ` and S2 == ` + vS2if0 + ` and S3 == ` + vS3if0 + ` and S4 == ` + vS4if0 + ` and S5 == ` + vS5if0 + `){
+        `+ vFnif0 + `();
+    }
     `+ addedIfString + `
-    ` : "") + `
+    ` : "   forward();") + `
+    ${visibleUS ? '}' : ''}
 }`;
     document.getElementById("arduinoCodeDiv").innerText = code;
 
@@ -459,11 +451,20 @@ function choiceCheck(st) {
         visibleIR = false;
         handleBtChanges();
         return;
-    }else if(st=='pg'){
+    }else if(st=='pg') {
         lineFollowerCheck.checked = false;
         ultrasoniceCheck.checked = false;
         bluetoothCheck.checked = false;
         handlePlaygroundChanges();
+        return;
+    }else if(st=='clearAll') {
+        lineFollowerCheck.checked = false;
+        ultrasoniceCheck.checked = false;
+        bluetoothCheck.checked = false;
+        playgroundCheck.checked = false;
+        visibleIR = lineFollowerCheck.checked;
+        visibleUS = ultrasoniceCheck.checked;
+        handleOnChange();
         return;
     }
     visibleIR = lineFollowerCheck.checked;
@@ -556,21 +557,21 @@ function btController(cnt){
         Serial.print(recieved);
         Serial.print("\\n");
     }
-        if(recieved ==      'F')`+uVal+`();  
-        else if(recieved == 'B')`+dVal+`();
-        else if(recieved == 'L')`+lVal+`();
-        else if(recieved == 'R')`+rVal+`();
-        else if(recieved == 'S')`+sVal+`();
+    if(recieved ==      'F')`+uVal+`();  
+    else if(recieved == 'B')`+dVal+`();
+    else if(recieved == 'L')`+lVal+`();
+    else if(recieved == 'R')`+rVal+`();
+    else if(recieved == 'S')`+sVal+`();
     `
     }else{
         cd = `
-        while (Serial.available()){ //Check if there is an available byte to read
-            delay(10); //Delay added to make thing stable 
-            char c = Serial.read(); //Conduct a serial read
-            if (c == '#') {break;} //Exit the loop when the # is detected after the word
-              voice += c; //Shorthand for voice = voice + c
-          }
-        if(voice.length() > 0){
+    while (Serial.available()){ //Check if there is an available byte to read
+        delay(10); //Delay added to make thing stable 
+        char c = Serial.read(); //Conduct a serial read
+        if (c == '#') {break;} //Exit the loop when the # is detected after the word
+            voice += c; //Shorthand for voice = voice + c
+    }
+    if(voice.length() > 0){
         `;
         let sels = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("select");
         let ips = document.getElementById("bluetoothVoiceBlock").getElementsByTagName("input");
@@ -581,30 +582,32 @@ function btController(cnt){
         }
         cd += `
         voice = "";
-        }`
+    }`
     }
     // console.log(cd);
     btCodeHandler();
 }
 
 function btCodeHandler() {
-
+    let spen1 = document.getElementById("SP_EN1bt").value;
+    let spen2 = document.getElementById("SP_EN2bt").value;
+    
     code = motorPins+`
     
-    float SP_EN1 = 200;
-    float SP_EN2 = 200; 
+float SP_EN1 = ${spen1};
+float SP_EN2 = ${spen2}; 
     `+functions+`
-    char recieved = 's';
-    String voice;
-    void setup(){
-        Serial.begin(9600);
-        `+motorAndEnablesSetup+`
-    }
-    void loop(){
-    
-    `+cd+`
-    
-    }`;
+char recieved = 's';
+String voice;
+
+void setup(){
+    Serial.begin(9600);
+    `+motorAndEnablesSetup+`
+}
+void loop(){
+`+cd+`
+
+}`;
     document.getElementById("arduinoCodeDiv").innerText = code;
 }
 
@@ -693,11 +696,13 @@ function getPgData(){
 }
 function handlePlaygroundChanges(){
     loopContent = getPgData();
+    let spen1 = document.getElementById("SP_EN1pg").value;
+    let spen2 = document.getElementById("SP_EN2pg").value;
 
     code = `
     `+motorPins+`
-float SP_EN1 = 200;
-float SP_EN2 = 200; 
+float SP_EN1 = ${spen1};
+float SP_EN2 = ${spen2}; 
     `+functions+`
 void setup(){
     Serial.begin(9600);

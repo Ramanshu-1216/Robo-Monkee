@@ -33,6 +33,8 @@
 <div class="scroll">
     <pre>
     <div id="playground"><pre><code class="lang-cpp">
+        float SP_EN1 = <input type="number" min="0" max="255" value="0" placeholder="SPEED 1" id="SP_EN1pg" oninput="handlePlaygroundChanges();this.style.width = ((this.value.length + 2) * 20) + 'px';" required></input>; <div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Left Motor Speed</span></div>
+        float SP_EN2 = <input type="number" min="0" max="255" value="0" placeholder="SPEED 2" id="SP_EN2pg" oninput="handlePlaygroundChanges();this.style.width = ((this.value.length + 2) * 20) + 'px';" required></input>; <div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Right Motor Speed</span></div>    
         //Choose function which you want to perform and time for which it should run!
         <div id="pgCode">
 <select name="functions">
@@ -209,8 +211,9 @@ void loop(){
 
     <div id="bluetooth" class="hide">
         <pre><code class="lang-cpp">
-            <input type="radio" checked="checked" oninput="showHideBluetoothBlocks('btn')" id="buttonControllerRadio" class="check" autocomplete="off" name="controllerType"><label class="radio-label" class="active" for="buttonControllerRadio">Button Controller</label> <input type="radio" oninput="showHideBluetoothBlocks('voice')" id="voiceControllerRadio" class="check" autocomplete="off" name="controllerType"><label class="radio-label" for="voiceControllerRadio">Voice Controller</label><div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Choose the mode of controller.</span></div>
-
+            <input type="radio" checked="checked" oninput="showHideBluetoothBlocks('btn')" id="buttonControllerRadio" class="check" autocomplete="off" name="controllerType"><label class="radio-label" class="active" for="buttonControllerRadio">Button Controller</label> <input type="radio" oninput="showHideBluetoothBlocks('voice')" id="voiceControllerRadio" class="check" autocomplete="off" name="controllerType"><label class="radio-label" for="voiceControllerRadio">Voice Controller</label><div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Choose the mode of controller.</span></div><br><br>
+            float SP_EN1 = <input type="number" min="0" max="255" value="0" placeholder="SPEED 1" id="SP_EN1bt" oninput="btCodeHandler();this.style.width = ((this.value.length + 2) * 20) + 'px';" required></input>; <div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Left Motor Speed</span></div>
+            float SP_EN2 = <input type="number" min="0" max="255" value="0" placeholder="SPEED 2" id="SP_EN2bt" oninput="btCodeHandler();this.style.width = ((this.value.length + 2) * 20) + 'px';" required></input>; <div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Right Motor Speed</span></div>
             <div id="bluetoothBtnController" class="show"> 
             // recieved is a variable in which serial data obtained from bluetooth controller is stored
 
@@ -353,7 +356,7 @@ void loop(){
                 <div class="modal-buttons" ><a href="https://create.arduino.cc/editor" target="blank"><button type="button" onclick="copyToClipboard('arduinoCodeDiv','upload')">Upload Code</button></a></div>
             </div>
 
-            <span onclick="document.getElementById('modalId').style.display='none'"
+            <span onclick="choiceCheck('clearAll'); document.getElementById('modalId').style.display='none'"
             class="w3-button w3-display-topright">&times;</span>
             </header>
           <div class="w3-container">
