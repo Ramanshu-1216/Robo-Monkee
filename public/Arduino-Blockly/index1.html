@@ -26,6 +26,11 @@
       <script type="text/javascript" src="block_code_generator.js"></script>
       <script type="text/javascript" src="functions.js"></script>
       <!--   --------------------------------------------------------------------------------------------------------------------------------------     -->
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
       <!--   --------------------------------------------------------------------------------------------------------------------------------------     -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/styles/default.min.css">
       <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.1/build/highlight.min.js"></script>
@@ -39,6 +44,10 @@
   <style>
     .home-button:hover{
       color: black;
+    }
+    .w3-container{
+      font-family: 'Nanum Gothic Coding', monospace;
+      font-size: 1.2rem;
     }
   </style>
   <body onload="auto_save_and_restore_blocks()">
@@ -90,7 +99,7 @@
         <li onclick="uploadClick()">Upload Code</li>
         <li onclick="discard()">Discard Code</li>
         
-        <li onclick=document.getElementById("sideBar").classList.toggle("active");>Close</li>
+        <li onclick="document.getElementById('sideBar').classList.toggle('active');">Close</li>
       </ul>
     </div>
     <div id="overlay"></div>
@@ -738,7 +747,7 @@
             <block type="button_horizontal_slot_2">
               <value name="button_set_3">
                 <block type="remote_option_5">
-                  <field name="options_dropdown">led()</field>
+                  <field name="options_dropdown">forward()</field>
                 </block>
               </value>
             </block>
@@ -761,7 +770,7 @@
             <block type="button_horizontal_slot_2">
               <value name="button_set_3">
                 <block type="remote_option_7">
-                  <field name="options_dropdown">buzzer()</field>
+                  <field name="options_dropdown">backward()</field>
                 </block>
               </value>
             </block>
@@ -786,16 +795,16 @@
       <field name="options_dropdown">backward()</field>
     </block>
     <block type="remote_option_5">
-      <field name="options_dropdown">led()</field>
+      <field name="options_dropdown">forward()</field>
     </block>
     <block type="remote_option_6">
       <field name="options_dropdown">spin_right()</field>
     </block>
     <block type="remote_option_7">
-      <field name="options_dropdown">buzzer()</field>
+      <field name="options_dropdown">backward()</field>
     </block>
-    <block type="remote_option_7">
-      <field name="options_dropdown">buzzer()</field>
+    <block type="remote_option_8">
+      <field name="options_dropdown">backward()</field>
     </block>
   </category>
   <category name="Voice Control" colour="#aa0114">
