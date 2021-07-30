@@ -202,7 +202,7 @@ Blockly.JavaScript['remote'] = function(block) {
   var value_button_set_1 = Blockly.JavaScript.valueToCode(block, 'button_set_1', Blockly.JavaScript.ORDER_NONE);
   var value_button_set_2 = Blockly.JavaScript.valueToCode(block, 'button_set_2', Blockly.JavaScript.ORDER_NONE);
   // TODO: Assemble JavaScript into code variable.
-  var code = "\nvoid loop()\n{\n\tif(Serial.available() > 0){\n\t\trecieved = Serial.read();\n\t\tSerial.println(recieved);\n\t}\n}\n\t//REMOTE CODE" + value_button_set_1 + value_button_set_2 + "\n\n}\n";
+  var code = "\nvoid loop()\n{\n\tif(Serial.available() > 0)\n\t{\n\t\trecieved = Serial.read();\n\t\tSerial.println(recieved);\n\t}\n\t//REMOTE CODE" + value_button_set_1 + value_button_set_2 + "\n\n}\n";
   return code;
 };
 
@@ -377,7 +377,7 @@ Blockly.JavaScript['voice'] = function(block) {
 Blockly.JavaScript['set_command'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\nvoid loop()\n{\n\t//Voice Control Code\n" + "\n\tString message = '';\n\tif(Serial.available() > 0)\n\t{\n\t\t// Checks whether data is comming from the serial port\n\t\tmessage = Serial.read();   // Reads the data from the serial port\n\t}\n" + statements_name + "}";
+  var code = "\nvoid loop()\n{\n\t//Voice Control Code\n" + "\n\tString message;\n\tif(Serial.available() > 0)\n\t{\n\t\t// Checks whether data is comming from the serial port\n\t\tmessage = Serial.read();   // Reads the data from the serial port\n\t}\n" + statements_name + "}";
   return code;
 };
 
