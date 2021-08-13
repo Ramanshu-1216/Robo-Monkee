@@ -370,14 +370,14 @@ Blockly.JavaScript['voice'] = function(block) {
     if(dropdown_move_dropdown == "stop"){
         dropdown_move_dropdown = "stop_all";
     }
-  var code = '\n\tif(message == "' + text_name + '")\n\t{\n\t\t' + dropdown_move_dropdown + '();' + '\n\t}\n';
+  var code = '\n\t\tif(voice == "' + text_name + '")\n\t\t{\n\t\t\t' + dropdown_move_dropdown + '();' + '\n\t\t}\n';
   return code;
 };
 
 Blockly.JavaScript['set_command'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = "\nvoid loop()\n{\n\t//Voice Control Code\n" + "\n\tString message;\n\tif(Serial.available() > 0)\n\t{\n\t\t// Checks whether data is comming from the serial port\n\t\tmessage = Serial.read();   // Reads the data from the serial port\n\t}\n" + statements_name + "}";
+  var code = "\nvoid loop()\n{\n\t//Voice Control Code\n" + "\n\twhile (Serial.available())\n\t{\n\t\t //Check if there is an available byte to read\n\t\tdelay(10); //Delay added to make thing stable\n\t\tchar c = Serial.read(); //Conduct a serial read\n\t\tif (c == '#') {break;} //Exit the loop when the # is detected after the word\n\t\tvoice += c; //Shorthand for voice = voice + c\n\t}\n\tif(voice.length() > 0)\n\t{" + statements_name + '\n\t\tvoice = "";\n\t}\n}';
   return code;
 };
 
