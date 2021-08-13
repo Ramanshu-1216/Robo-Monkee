@@ -123,7 +123,7 @@ Blockly.Blocks['line'] = {
 Blockly.Blocks['wall'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Wall Follower");
+        .appendField("Obstacle Detector");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#a7226e");
