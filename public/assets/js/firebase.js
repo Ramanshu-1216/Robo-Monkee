@@ -124,8 +124,4 @@ function signOut() {
         // An error happened.
         console.log(error);
       });
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 87d86cf3a621797f371f06c6c7cd3f3a352800d9
