@@ -89,3 +89,12 @@ form {
   background-color: rgba(203, 43, 94, 1);
   color: #fff;
 }
+
+.credsIP {
+  height: 25px;
+  margin: 10 auto;
+  font-weight: 600;
+  border: none; /* <-- This thing here */
+  border:solid 1px #ccc;
+  border-radius: 10px;
+}

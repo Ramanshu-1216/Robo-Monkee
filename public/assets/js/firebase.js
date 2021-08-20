@@ -113,7 +113,26 @@ function checkUser(st) {
         }
       });
 }
+function signInUsingEmailAndPassword(){
+    email = document.getElementById("loginEmailId").value;
+    password = document.getElementById("loginPassword").value;
+    // console.log(`${email} and ${password}`);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    console.log(`${JSON.stringify(user)} logged in`);
+    alert("You have been logged in successfully!");
+    window.location = "../course.html";
 
+    // ...
+    })
+    .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(`${errorCode} => ${errorMessage}`);
+    });
+}
 function signOut() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
