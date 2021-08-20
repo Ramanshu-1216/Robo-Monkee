@@ -122,9 +122,10 @@ function signInUsingEmailAndPassword(){
     // Signed in
     var user = userCredential.user;
     console.log(`${JSON.stringify(user)} logged in`);
+    
     alert("You have been logged in successfully!");
     window.location = "../course.html";
-
+    // return;
     // ...
     })
     .catch((error) => {
