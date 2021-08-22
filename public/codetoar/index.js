@@ -504,8 +504,8 @@ function handleBtChanges() {
     r = document.getElementById('btControlsR');
     l = document.getElementById('btControlsL');
     s = document.getElementById('btControlsS');
-    // sr = document.getElementById('btControlsSR');
-    // sl = document.getElementById('btControlsSL');
+    sr = document.getElementById('btControlsSR');
+    sl = document.getElementById('btControlsSL');
     // hr = document.getElementById('btControlsHR');
 
     uVal = u.options[u.selectedIndex].text;
@@ -513,8 +513,8 @@ function handleBtChanges() {
     rVal = r.options[r.selectedIndex].text;
     lVal = l.options[l.selectedIndex].text;
     sVal = s.options[s.selectedIndex].text;
-    // srVal = sr.options[sr.selectedIndex].text;
-    // slVal = sl.options[sl.selectedIndex].text;
+    srVal = sr.options[sr.selectedIndex].text;
+    slVal = sl.options[sl.selectedIndex].text;
     // hrVal = hr.options[hr.selectedIndex].text;
 
 
@@ -562,6 +562,9 @@ function btController(cnt){
     else if(recieved == 'L')`+lVal+`();
     else if(recieved == 'R')`+rVal+`();
     else if(recieved == 'S')`+sVal+`();
+    else if(recieved == 'I')`+srVal+`();
+    else if(recieved == 'G')`+slVal+`();
+
     `
     }else{
         cd = `
