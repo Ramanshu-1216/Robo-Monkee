@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     init();
+    // console.log("Checking");
+    // console.log(document.URL.split('?')[1]);
+    if(document.URL.includes("videoPage"))
+        setVideoUrl(document.URL.split('?')[1]);
+    if(document.URL.includes("profile"))
+        checkUser();
 });
 var db;
 function init(){
@@ -124,7 +130,7 @@ function signInUsingEmailAndPassword(){
     console.log(`${JSON.stringify(user)} logged in`);
     
     alert("You have been logged in successfully!");
-    window.location = "../course.html";
+    window.location = "./profile/examples/dashboard.html";
     // return;
     // ...
     })
@@ -143,5 +149,36 @@ function signOut() {
       }).catch((error) => {
         // An error happened.
         console.log(error);
+      });
+}
+
+function setVideoUrl(url){
+    console.log(url);
+    var courseRef = db.collection("Course").doc(url);
+    var docData;
+    courseRef.get().then((doc) => {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+            docData = doc.data();
+            videoPlayer = document.getElementById('mainVideoPlayer').src = docData.src;
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+}
+
+function checkUser(){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(JSON.stringify(user));
+            console.log("Signed in");
+        } else {
+            alert("You are not signed in!")
+            console.log("Not signed in");
+            window.location = '../../login.html'
+        }
       });
 }
