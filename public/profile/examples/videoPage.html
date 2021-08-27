@@ -28,9 +28,31 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <script>
+    document.onkeydown = function (e) {
+        if (event.keyCode == 123) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+            return false;
+        }
+        if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+            return false;
+        }
+    }
+  </script>
 </head>
 
-<body class="">
+<body oncontextmenu="return false;" class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
       <!--
@@ -283,7 +305,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <p class="card-category"> Here is a subtitle for this table</p>
                 </div>
                 <div class="card-body" style="width: 1280px; height: 720px;">
-                  <iframe id="mainVideoPlayer" style="width: 100%; height: 100%;" allowfullscreen></iframe>
+                  <iframe id="mainVideoPlayer" style="width: 100%; height: 100%;" frameborder="0" scrolling="no" seamless="" allowfullscreen></iframe>
+                  <div style="width: 80px; height: 80px; position: absolute; opacity: 0; right: 0px; top: 0px;">&nbsp;</div>
                   <!-- <div class="table-responsive">
                     <table class="table table-hover">
                       <thead class="">

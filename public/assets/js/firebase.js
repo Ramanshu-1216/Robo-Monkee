@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(document.URL.includes("videoPage"))
         setVideoUrl(document.URL.split('?')[1]);
     if(document.URL.includes("profile"))
-        checkUser();
+        checkUserSignedIn();
 
 });
 var db, database, signedInUser;
@@ -170,7 +170,7 @@ function setVideoUrl(url){
     var docData;
     courseRef.get().then((doc) => {
         if (doc.exists) {
-            console.log("Document data:", doc.data());
+            // console.log("Document data:", doc.data());
             docData = doc.data();
             videoPlayer = document.getElementById('mainVideoPlayer').src = docData.src;
         } else {
@@ -182,11 +182,11 @@ function setVideoUrl(url){
     });
 }
 
-function checkUser(){
+function checkUserSignedIn(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             signedInUser = user;
-            console.log(JSON.stringify(user));
+            // console.log(JSON.stringify(user));
             console.log("Signed in");
             if(document.URL.includes("user"))
                 setUserInfo();
