@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         setVideoUrl(document.URL.split('?')[1]);
     if(document.URL.includes("profile"))
         checkUser();
+
 });
-var db;
+var db, database, signedInUser;
 function init(){
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -25,6 +26,7 @@ function init(){
     firebase.analytics();
 
     db = firebase.firestore();
+    database = firebase.database();
 
 }
 
@@ -122,23 +124,33 @@ function checkUser(st) {
 function signInUsingEmailAndPassword(){
     email = document.getElementById("loginEmailId").value;
     password = document.getElementById("loginPassword").value;
-    // console.log(`${email} and ${password}`);
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    console.log(`${JSON.stringify(user)} logged in`);
-    
-    alert("You have been logged in successfully!");
-    window.location = "./profile/examples/dashboard.html";
-    // return;
-    // ...
-    })
-    .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(`${errorCode} => ${errorMessage}`);
+    var userRef = firebase.database().ref('users/' + email.split('@')[0]);
+    userRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        if(!data['verified']){
+            alert("You're not yet verified! If there is any problem please contact us.");
+            return;
+        }else {
+            // console.log(`${email} and ${password}`);
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed in
+                var user = userCredential.user;
+                // console.log(`${JSON.stringify(user)} logged in`);
+                
+                alert("You have been logged in successfully!");
+                window.location = "./profile/examples/dashboard.html";
+                return;
+                // ...
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(`${errorCode} => ${errorMessage}`);
+            });
+        }
     });
+
 }
 function signOut() {
     firebase.auth().signOut().then(() => {
@@ -173,12 +185,57 @@ function setVideoUrl(url){
 function checkUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
+            signedInUser = user;
             console.log(JSON.stringify(user));
             console.log("Signed in");
+            if(document.URL.includes("user"))
+                setUserInfo();
         } else {
             alert("You are not signed in!")
             console.log("Not signed in");
             window.location = '../../login.html'
         }
       });
+}
+
+function register(){
+    let inputs = document.getElementById('registrationForm').getElementsByTagName('input');
+    // console.log(inputs);
+    let user = {};
+    for(var i=0; i<inputs.length; ++i){
+        user[inputs[i].id] = inputs[i].value;
+    }
+    user['verified'] = false;
+    email = user['registrationEmail'];
+    password = user['registrationPassword'];
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        // ...
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage)
+        // ..
+    });
+    firebase.database().ref('users/' + user['registrationEmail'].split('@')[0]).set(user).then(
+        () => alert("Registered Successfully")
+    );  
+    // console.log(JSON.stringify(user));
+}
+
+function setUserInfo(){
+    var userRef = firebase.database().ref('users/' + signedInUser.email.split('@')[0]);
+        userRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        // console.log(data);
+        profile = document.getElementById('userProfile').getElementsByTagName('h5');
+        // console.log(profile)
+        profile[0].innerText = data['registrationName'];
+        profile[1].innerText = data['registrationEmail'];
+        profile[2].innerText = data['registrationPhone'];
+        profile[3].innerText = data['registrationAddress'];
+    });
 }
