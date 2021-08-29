@@ -124,13 +124,13 @@ function checkUser(st) {
 function signInUsingEmailAndPassword(){
     email = document.getElementById("loginEmailId").value;
     password = document.getElementById("loginPassword").value;
-    var userRef = firebase.database().ref('users/' + email.split('@')[0]);
-    userRef.on('value', (snapshot) => {
-        const data = snapshot.val();
-        if(!data['verified']){
-            alert("You're not yet verified! If there is any problem please contact us.");
-            return;
-        }else {
+    // var userRef = firebase.database().ref('users/' + email.split('@')[0]);
+    // userRef.on('value', (snapshot) => {
+    //     const data = snapshot.val();
+    //     if(!data['verified']){
+    //         alert("You're not yet verified! If there is any problem please contact us.");
+    //         return;
+    //     }else {
             // console.log(`${email} and ${password}`);
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
@@ -148,8 +148,8 @@ function signInUsingEmailAndPassword(){
                 var errorMessage = error.message;
                 console.log(`${errorCode} => ${errorMessage}`);
             });
-        }
-    });
+        // }
+    // });
 
 }
 function signOut() {
