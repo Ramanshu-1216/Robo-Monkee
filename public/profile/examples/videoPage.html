@@ -51,15 +51,15 @@ The above copyright notice and this permission notice shall be included in all c
     }
   </script>
 </head>
-
-<body oncontextmenu="return false;" class="">
+<!-- oncontextmenu="return false;" -->
+<body  class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
+    <!-- <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+      
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
-    -->
+   
       <div class="logo"><a href="../../index.html" class="simple-text logo-normal">
           RoboMonkee
         </a></div>
@@ -83,24 +83,24 @@ The above copyright notice and this permission notice shall be included in all c
                 <p>Video List</p>
               </a>
             </li>
-            <!-- <li class="nav-item ">
+            <li class="nav-item ">
               <a class="nav-link" href="./typography.html">
                 <i class="material-icons">library_books</i>
                 <p>Typography</p>
               </a>
-            </li> -->
-            <!-- <li class="nav-item ">
+            </li>
+            <li class="nav-item ">
               <a class="nav-link" href="./icons.html">
                 <i class="material-icons">bubble_chart</i>
                 <p>Icons</p>
               </a>
-            </li> -->
-            <!-- <li class="nav-item ">
+            </li>
+            <li class="nav-item ">
               <a class="nav-link" href="./map.html">
                 <i class="material-icons">location_ons</i>
                 <p>Maps</p>
               </a>
-            </li> -->
+            </li>
             <li class="nav-item ">
               <a class="nav-link" href="./notifications.html">
                 <i class="material-icons">notifications</i>
@@ -109,22 +109,22 @@ The above copyright notice and this permission notice shall be included in all c
             </li>
           </ul>
         </div>
-    </div>
+    </div> -->
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <!-- <a class="navbar-brand" href="javascript:;">Table List</a> -->
+            <a class="navbar-brand" href="./dashboard.html"><img src="../../Arduino-Blockly/l.svg"/><b>ROBOMONKEE COURSES</b></a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end">
-            <!-- <ul class="navbar-nav">
+          </button> -->
+          <!-- <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
@@ -155,9 +155,9 @@ The above copyright notice and this permission notice shall be included in all c
                   <a class="dropdown-item" href="#">Log out</a>
                 </div>
               </li>
-            </ul> -->
+            </ul>
           </div>
-        </div>
+        </div> -->
       </nav>
       <!-- End Navbar -->
       <div class="content">
@@ -304,7 +304,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <h4 class="card-title mt-0"> Video</h4>
                   <p class="card-category"> Here is a subtitle for this video</p>
                 </div>
-                <div class="card-body" style="width: 1280px; height: 720px;">
+                <!-- style="width: 1280px; height: 720px;" -->
+                <div class="card-body col-md-12" style="height: 720px;">
                   <iframe id="mainVideoPlayer" style="width: 100%; height: 100%;" frameborder="0" scrolling="no" seamless="" allowfullscreen></iframe>
                   <div style="width: 80px; height: 80px; position: absolute; opacity: 0; right: 0px; top: 0px;">&nbsp;</div>
                   <!-- <div class="table-responsive">
