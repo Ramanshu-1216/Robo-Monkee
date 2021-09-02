@@ -44,13 +44,13 @@
                             <h2 style="color: rgb(56, 56, 56);">Log In</h2>
                         </div>
                         <div class="row credsIP">
-                            <input class="credsIP" id="loginEmailId" type="email" placeholder="Enter your email" >
+                            <input class="credsIP" id="loginEmailId" pattern="[7-9]{1}[0-9]{9}" type="number" placeholder="Enter your email" >
                         </div>
                         <div class="row credsIP">
                             <input class="credsIP" id="loginPassword" type="password" placeholder="Enter your password" >
                         </div>
                         <div class="row signUp">
-                            <input type="submit" value="Login" onclick="signInUsingEmailAndPassword();" class="btn" >
+                            <input type="submit" value="Login" onclick="signInRealTimeDB();" class="btn" >
                         </div>
                         <!-- <div class="row">
                             <img style="width: 50%; margin: auto; margin-bottom: 30px;" src="./assets/images/google.png"/>

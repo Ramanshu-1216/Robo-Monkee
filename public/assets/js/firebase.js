@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         setVideoUrl(document.URL.split('?')[1]);
     if(document.URL.includes("profile"))
         checkUserSignedIn();
+    else{
+        sessionStorage.clear();
+    }
 
 });
 var db, database, signedInUser;
@@ -152,16 +155,41 @@ function signInUsingEmailAndPassword(){
     // });
 
 }
+function signInRealTimeDB() {
+    email = document.getElementById("loginEmailId").value;
+    password = document.getElementById("loginPassword").value;
+
+    var userRef = firebase.database().ref('users/' + email);
+        userRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        // console.log(data);
+        if(data == null){
+            alert("Wrong credentials. Please try again.");
+            return;
+        }
+        if(password === data){
+            alert("You have been logged in successfully!");
+            // console.log(sessionStorage.getItem('isSignedIn'))
+            sessionStorage.id = email;
+            sessionStorage.isSignedIn = true;
+            window.location = "./profile/examples/dashboard.html";
+            return;
+        }
+    });
+}
 function signOut() {
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        alert("Signed out successfully!");
-        isBuying = false;
-        // window.location = "../index.html";
-      }).catch((error) => {
-        // An error happened.
-        console.log(error);
-      });
+    sessionStorage.clear();
+    alert("Signed out successfully!");
+
+    // firebase.auth().signOut().then(() => {
+    //     // Sign-out successful.
+    //     alert("Signed out successfully!");
+    //     isBuying = false;
+    //     // window.location = "../index.html";
+    //   }).catch((error) => {
+    //     // An error happened.
+    //     console.log(error);
+    //   });
 }
 
 function setVideoUrl(url){
@@ -183,19 +211,26 @@ function setVideoUrl(url){
 }
 
 function checkUserSignedIn(){
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            signedInUser = user;
-            // console.log(JSON.stringify(user));
-            console.log("Signed in");
-            if(document.URL.includes("user"))
-                setUserInfo();
-        } else {
-            alert("You are not signed in!")
-            console.log("Not signed in");
-            window.location = '../../login.html'
-        }
-      });
+    if(sessionStorage.getItem('id')===null){
+        alert("You are not signed in!");
+        console.log("Not signed in");
+        window.location = '../../login.html';
+    }else {
+        console.log("Signed in");
+    }
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //     if (user) {
+    //         signedInUser = user;
+    //         // console.log(JSON.stringify(user));
+    //         console.log("Signed in");
+    //         if(document.URL.includes("user"))
+    //             setUserInfo();
+    //     } else {
+    //         alert("You are not signed in!")
+    //         console.log("Not signed in");
+    //         window.location = '../../login.html'
+    //     }
+    //   });
 }
 
 function register(){
