@@ -506,7 +506,7 @@ function handleBtChanges() {
     s = document.getElementById('btControlsS');
     sr = document.getElementById('btControlsSR');
     sl = document.getElementById('btControlsSL');
-    // hr = document.getElementById('btControlsHR');
+    hr = document.getElementById('btControlsHR');
 
     uVal = u.options[u.selectedIndex].text;
     dVal = d.options[d.selectedIndex].text;
@@ -515,7 +515,7 @@ function handleBtChanges() {
     sVal = s.options[s.selectedIndex].text;
     srVal = sr.options[sr.selectedIndex].text;
     slVal = sl.options[sl.selectedIndex].text;
-    // hrVal = hr.options[hr.selectedIndex].text;
+    hrVal = hr.options[hr.selectedIndex].text;
 
 
     // vIP1 = document.getElementById('vIP1').value;
@@ -564,7 +564,8 @@ function btController(cnt){
     else if(recieved == 'S')`+sVal+`();
     else if(recieved == 'I')`+srVal+`();
     else if(recieved == 'G')`+slVal+`();
-
+    else if(recieved == 'V')`+slVal+`();
+    else stop();
     `
     }else{
         cd = `
@@ -581,7 +582,7 @@ function btController(cnt){
         for(let i=0; i<sels.length; i++){
             cd+=(i==0?"":"else ")+`if(voice == "*`+ips[i].value.toLocaleLowerCase()+`"){
             `+sels[i].options[sels[i].selectedIndex].text+`();
-        }`;
+        }else stop();`;
         }
         cd += `
         voice = "";

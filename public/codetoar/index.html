@@ -223,10 +223,10 @@ void loop(){
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin_right</option>
-                    <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
             }
             else if(recieved == 'B'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/down-arrow.png"/></span></div>){
@@ -238,7 +238,7 @@ void loop(){
                     <option value="stop">stop</option>
                     <option value="stop">spin_right</option>
                     <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="stop">backwards</option>
                 </select>();
             }
             else if(recieved == 'L'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/left-arrow.png"/></span></div>){
@@ -247,10 +247,10 @@ void loop(){
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin_right</option>
-                    <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
             }
             else if(recieved == 'R'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/right-arrow.png"/></span></div>){
@@ -259,10 +259,10 @@ void loop(){
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin_right</option>
-                    <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
             }
             else if(recieved == 'S'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/stop.png"/></span></div>){
@@ -271,10 +271,10 @@ void loop(){
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin_right</option>
-                    <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
             }
             else if(recieved == 'I'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-left.png"/></span></div>){
@@ -283,10 +283,10 @@ void loop(){
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin_right</option>
-                    <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
             }
             else if(recieved == 'G'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-right.png"/></span></div>){
@@ -295,25 +295,24 @@ void loop(){
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin_right</option>
-                    <option value="stop">spin_left</option>
-                    <!-- <option value="stop">horn</option> -->
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
             }
-            <!--
             else if(recieved == 'V'<div class="tooltip"><b><i> i </i></b><span class="tooltiptext">Button <img src="../assets/images/bt/spin-right.png"/></span></div>){
                 <select name="functions" id="btControlsHR" >
                     <option value="forward">forward</option>
                     <option value="reverse">reverse</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
-                    <option value="stop">stop</option>
-                    <option value="stop">spin right</option>
-                    <option value="stop">spin left</option>
-                    <option value="stop">horn</option>
+                    <option value="forward">forward</option>
+                    <option value="spin_right">spin_right</option>
+                    <option value="spin_left">spin_left</option>
+                    <option value="reverse">reverse</option>
                 </select>();
-            } -->
+            }
             </div>
             <div id="bluetoothVoiceController" class="hide"><div id="bluetoothVoiceBlock">
             // voiceInput is a variable in which serial data (whatever you'll say on mic) obtained from bluetooth controller is stored
@@ -324,9 +323,10 @@ void loop(){
                 <option value="reverse">reverse</option>
                 <option value="left">left</option>
                 <option value="right">right</option>
-                <option value="stop">stop</option>
-                <option value="stop">spin_right</option>
-                <option value="stop">spin_left</option>
+                <option value="forward">forward</option>
+                <option value="spin_right">spin_right</option>
+                <option value="spin_left">spin_left</option>
+                <option value="reverse">reverse</option>
                 </select>();
             }
             </div>
