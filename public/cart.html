@@ -128,6 +128,43 @@ nav{
   border-radius: 0;
 
 }
+ /* The Modal (background) */
+ .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
 /* Individual bars */
 .bar-5 {width: 70%; height: 18px; background-color: #04AA6D;}
 .bar-4 {width: 20%; height: 18px; background-color: #2196F3;}
@@ -472,16 +509,84 @@ nav{
                   </select>
                     </div>
                   </div>
-                  <div class="product-count">
+                  <!-- <div class="product-count">
                     <label for="size">Quantity</label>
                     <form action="#" class="display-flex">
                     <div class="qtyminus">-</div>
                     <input type="text" name="quantity" value="1" class="qty">
                     <div class="qtyplus">+</div>
-                </form>
-                <a href="#" onClick="checkUser(true);" class="round-black-btn" style="box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;">BUY</a>
-                <button class="round-black-btn buy-btn" style="outline: none; box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;"><a href="#buy-card" style="text-decoration: none; color: white;">BUY</a></button>
+                </form> -->
+                <!-- <a href="https://test.payu.in/merchant/postservice.php?form=1" onClick="checkUser(true);" class="round-black-btn" style="box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;">BUY</a> -->
+                <!-- <button class="round-black-btn buy-btn" style="outline: none; box-shadow: 4px 4px 8px rgba(0,0,0,1);background-color:rgb(49, 49, 49);border: 0em;border-radius: 25px;"><a href="#buy-card" style="text-decoration: none; color: white;">BUY</a></button> -->
                 <!-- <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HTz3N6RXV8GhrY" async> </script> </form> -->
+                <div> <a style=" width: 135px; background-color: #460e49; text-align: center; font-weight: 800; padding: 11px 0px; color: white; font-size: 12px; display: inline-block; text-decoration: none; " href='https://pmny.in/5IJmbkyYdLuj'>Buy Now</a> </div>
+                
+                  <!-- Trigger/Open The Modal -->
+                  <button id="myBtn">Open Modal</button>
+
+                  <!-- The Modal -->
+                  <div id="myModal" class="modal">
+                  
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <div id="registrationForm" class="container-fluid col-md-8 col-xs-12 col-sm-12">
+                                      <b><h4 style="text-align: center;">NEW TO ROBOMONKEE?</h4></b>
+                                  <form>
+                                      <div class="form-group">
+                                        <label for="registrationEmail">Email address</label>
+                                        <input type="email" class="form-control" id="registrationEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="registrationName">Full Name</label>
+                                          <input type="text" class="form-control" id="registrationName" aria-describedby="emailHelp" placeholder="Enter name" required>
+                                          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="registrationAddress">Address</label>
+                                          <input class="form-control" id="registrationAddress" aria-describedby="emailHelp" placeholder="Enter address" required>
+                                          <small id="emailHelp" class="form-text text-muted">Please enter address in details since it will be used to deliver bot.</small>
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label for="registrationCity">City</label>
+                                          <input type="text" class="form-control" id="registrationCity" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                          <label for="registrationState">State</label>
+                                          <input type="text" class="form-control" id="registrationState" required>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                          <label for="registrationPin">Pin Code</label>
+                                          <input type="text" class="form-control" id="registrationPin" required>
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="registrationPhone">Contact Number</label>
+                                          <input type="number" class="form-control" id="registrationPhone" aria-describedby="emailHelp" placeholder="Enter contact number" required>
+                                          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="registrationPassword">Password</label>
+                                        <input type="password" class="form-control" id="registrationPassword" placeholder="Password" required>
+                                      </div>
+
+                                      <!-- <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                      </div> -->
+                                      <br>
+                                      <button type="submit" onclick="register(event);" class="btn btn-primary">Submit</button>&nbsp;<small id="emailHelp" class="form-text text-muted">You can access course only after verification by our team.</small>
+                                      <small id="emailHelp" class="form-text text-muted">We'll never share your email and other sensitive information with anyone else.</small>
+
+                                  </form>
+                              </div>
+                    </div>
+                  
+                  </div> 
+
+
                   </div>
                 </div>
               </div>
@@ -867,15 +972,12 @@ nav{
   </footer>
   <!-- End Footer-->
 
-  <script src="./assets/js/firebase.js" ></script>
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-  https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
+  <script src="./assets/js/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+  <script src='https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js'></script>
         
     <!-- Global Init -->
     <script src="assets/js/cart.js"></script>
@@ -894,12 +996,39 @@ nav{
     }
   </script>
   <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+  </script>
+  <!-- <script>
   var viewMode = getCookie("view-mode");
     if(viewMode == "desktop"){
         viewport.setAttribute('content', 'width=1024');
     }else if (viewMode == "mobile"){
         viewport.setAttribute('content', 'width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no');
-    }</script>
+    }</script> -->
 
 <!-- <button id="rzp-button1">Pay</button> -->
 <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -945,20 +1074,5 @@ document.getElementById('rzp-button1').onclick = function(e){
 }
 </script> -->
 
-<script>
-  var buyBtn = document.querySelector(".buy-btn");
-  buyBtn.addEventListener("click", function () {
-    document.querySelector(".overlay").style.visibility = "visible";
-    document.querySelector("body").style.overflow = "hidden";
-    // document.querySelector("body").classList.add("blur");
-    document.querySelector("#slider").style.boxShadow = "0 0 30px white";
-    // $(".container").delay(1000).animate({ opacity: 1 }, 700);​
-  });
-  document.querySelector(".close-btn").addEventListener("click", function(){
-    document.querySelector(".overlay").style.visibility = "hidden";
-    document.querySelector("body").style.overflow = "visible";
-    document.querySelector("#slider").style.boxShadow = "none"
-  })
-</script>
   </body>
 </html>

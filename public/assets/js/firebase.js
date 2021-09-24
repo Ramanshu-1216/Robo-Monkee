@@ -127,20 +127,26 @@ function checkUser(st) {
 function signInUsingEmailAndPassword(){
     email = document.getElementById("loginEmailId").value;
     password = document.getElementById("loginPassword").value;
-    // var userRef = firebase.database().ref('users/' + email.split('@')[0]);
-    // userRef.on('value', (snapshot) => {
-    //     const data = snapshot.val();
-    //     if(!data['verified']){
-    //         alert("You're not yet verified! If there is any problem please contact us.");
-    //         return;
-    //     }else {
+    wildCard = false;
+    if(!isNaN(email)){
+        email+='@robomonkee.com';
+        wildCard = true;
+    }
+    var userRef = firebase.database().ref('users/' + email.split('@')[0]);
+    userRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        if(!data['verified'] && !wildCard){
+            alert("You're not yet verified! If there is any problem please contact us.");
+            return;
+        }else {
             // console.log(`${email} and ${password}`);
             firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 // Signed in
                 var user = userCredential.user;
                 // console.log(`${JSON.stringify(user)} logged in`);
-                
+                sessionStorage.id = email;
+                sessionStorage.isSignedIn = true;
                 alert("You have been logged in successfully!");
                 window.location = "./profile/examples/dashboard.html";
                 return;
@@ -151,8 +157,8 @@ function signInUsingEmailAndPassword(){
                 var errorMessage = error.message;
                 console.log(`${errorCode} => ${errorMessage}`);
             });
-        // }
-    // });
+        }
+    });
 
 }
 function signInRealTimeDB() {
@@ -211,13 +217,28 @@ function setVideoUrl(url){
 }
 
 function checkUserSignedIn(){
-    if(sessionStorage.getItem('id')===null){
-        alert("You are not signed in!");
-        console.log("Not signed in");
-        window.location = '../../login.html';
-    }else {
-        console.log("Signed in");
-    }
+    // if(sessionStorage.getItem('id')===null){
+    //     alert("You are not signed in!");
+    //     console.log("Not signed in");
+    //     window.location = '../../login.html';
+    // }else {
+    //     console.log("Signed in");
+    // }
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          var uid = user.uid;
+            console.log("signed in");
+          // ...
+        } else {
+          // User is signed out
+          // ...
+          alert("You are not signed in!");
+          console.log("Not signed in");
+          window.location = '../../login.html';
+        }
+      });
     // firebase.auth().onAuthStateChanged(function(user) {
     //     if (user) {
     //         signedInUser = user;
@@ -233,32 +254,42 @@ function checkUserSignedIn(){
     //   });
 }
 
-function register(){
+function register(e){
+    e.preventDefault();
     let inputs = document.getElementById('registrationForm').getElementsByTagName('input');
     // console.log(inputs);
     let user = {};
     for(var i=0; i<inputs.length; ++i){
+        if(inputs[i].value == ""){
+            alert("Check inputs properly!");
+            return ;
+        }
         user[inputs[i].id] = inputs[i].value;
     }
+    console.log(JSON.stringify(user));
     user['verified'] = false;
     email = user['registrationEmail'];
+    console.log(email);
     password = user['registrationPassword'];
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Signed in 
-        var user = userCredential.user;
+        // var user = userCredential.user;
+        firebase.database().ref('users/' + email.split('@')[0]).set(user).then(
+            () => alert("Registered Successfully")
+        );  
+        console.log(JSON.stringify(user));
+        
         // ...
     })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage)
+        alert(errorMessage);
         // ..
     });
-    firebase.database().ref('users/' + user['registrationEmail'].split('@')[0]).set(user).then(
-        () => alert("Registered Successfully")
-    );  
-    // console.log(JSON.stringify(user));
+
 }
 
 function setUserInfo(){
