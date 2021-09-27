@@ -7,7 +7,7 @@ $firstname=$_POST["firstname"];
 $email=$_POST["email"];
 $status = $_POST["status"];
 $postedhash= $_POST["hash"];
-$salt="your salt key"; //Please change the value with the live salt for production environment
+$salt="s9iyIS87"; //Please change the value with the live salt for production environment
 
 //hash sequence
 //$responseHashSeq = $salt.'|'.$status.'|udf1|udf2|||||'.$email.'|'.$firstname.'|'.$productinfo.'|'.$amount.'|'.$txnid.'|'.$key;
