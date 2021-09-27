@@ -5,7 +5,7 @@ $amount=$_POST["amount"]; //Please use the amount value from database
 $productinfo=$_POST["productinfo"];
 $firstname=$_POST["firstname"];
 $email=$_POST["email"];
-$salt="your salt key"; //Please change the value with the live salt for production environment
+$salt="s9iyIS87"; //Please change the value with the live salt for production environment
 
 //hash sequence
 
