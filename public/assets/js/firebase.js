@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         checkUserSignedIn();
     else{
         sessionStorage.clear();
+        document.getElementById("cover").style.display = "none";
+        document.getElementById("loader").style.display = "none";
     }
 
 });
@@ -132,32 +134,24 @@ function signInUsingEmailAndPassword(){
         email+='@robomonkee.com';
         wildCard = true;
     }
-    var userRef = firebase.database().ref('users/' + email.split('@')[0]);
-    userRef.on('value', (snapshot) => {
-        const data = snapshot.val();
-        if(!data['verified'] && !wildCard){
-            alert("You're not yet verified! If there is any problem please contact us.");
-            return;
-        }else {
-            // console.log(`${email} and ${password}`);
-            firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // Signed in
-                var user = userCredential.user;
-                // console.log(`${JSON.stringify(user)} logged in`);
-                sessionStorage.id = email;
-                sessionStorage.isSignedIn = true;
-                alert("You have been logged in successfully!");
-                window.location = "./profile/examples/dashboard.html";
-                return;
-                // ...
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log(`${errorCode} => ${errorMessage}`);
-            });
-        }
+
+    // console.log(`${email} and ${password}`);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        // console.log(`${JSON.stringify(user)} logged in`);
+        sessionStorage.id = email;
+        sessionStorage.isSignedIn = true;
+        alert("You have been logged in successfully!");
+        window.location = "./profile/examples/dashboard.html";
+        return;
+        // ...
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(`${errorCode} => ${errorMessage}`);
     });
 
 }
@@ -230,6 +224,21 @@ function checkUserSignedIn(){
           // https://firebase.google.com/docs/reference/js/firebase.User
           var uid = user.uid;
             console.log("signed in");
+            email = user.email;
+            console.log(email);
+            var userRef = firebase.database().ref('users/' + email.split('@')[0]);
+            userRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if(!data['verified']){
+                    document.getElementById('notVerified').style.display = 'block';
+                    document.getElementById('courseCard').style.display = 'none';
+                    return;
+                }else {
+                    document.getElementById('notVerified').style.display = 'none';
+                    document.getElementById('courseCard').style.display = 'block';
+                }
+            });
+
           // ...
         } else {
           // User is signed out
@@ -254,8 +263,10 @@ function checkUserSignedIn(){
     //   });
 }
 
-function register(e){
+function register(e, clr){
     e.preventDefault();
+    document.getElementById("cover").style.display = "block";
+    document.getElementById("loader").style.display = "block";
     let inputs = document.getElementById('registrationForm').getElementsByTagName('input');
     // console.log(inputs);
     let user = {};
@@ -266,19 +277,21 @@ function register(e){
         }
         user[inputs[i].id] = inputs[i].value;
     }
-    console.log(JSON.stringify(user));
+    // console.log(JSON.stringify(user));
     user['verified'] = false;
+    user['colour'] = clr;
     email = user['registrationEmail'];
-    console.log(email);
+    // console.log(JSON.stringify(user));
     password = user['registrationPassword'];
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Signed in 
-        // var user = userCredential.user;
-        firebase.database().ref('users/' + email.split('@')[0]).set(user).then(
-            () => alert("Registered Successfully")
-        );  
-        console.log(JSON.stringify(user));
+        firebase.database().ref('users/' + user['registrationEmail'].split('@')[0]).set(user).then(
+            () => {
+                // console.log(JSON.stringify(user));
+                window.location.assign('https://pmny.in/5IJmbkyYdLuj');
+            }
+        );
         
         // ...
     })

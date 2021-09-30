@@ -46,6 +46,46 @@
     <link rel="stylesheet" type="text/css" href="assets/css/cart.css">
     <link rel="stylesheet" type="text/css" href="assets/css/botInfo.css">
     <style>
+
+#cover {
+  display: block;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #753a88; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  display: block;
+  position: absolute; /*Can also be `fixed`*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
       .checked {
         color: orange;
       }
@@ -314,6 +354,8 @@ nav{
         -webkit-animation: fadein 2s;
         -o-animation: fadein 2s;" -->
     <body>
+      <div id="loader" class="loader"></div> 
+      <div id="cover"></div>
       <!-- <div class="overlay" style="background-color: rgba(0, 0, 0, 0.3); width: 100%; height: 100vh; z-index: 1; position: absolute; display: block; visibility: hidden; top: 0;">
         <div class="close-btn btn" style="position: absolute; right: 7%; top: 10%; background-color: white; border-radius: 50%; width: 40px; height: 40px; box-shadow: 0 0 2 gray;">
           X
@@ -522,8 +564,8 @@ nav{
                 <!-- <div> <a style=" width: 135px; background-color: #460e49; text-align: center; font-weight: 800; padding: 11px 0px; color: white; font-size: 12px; display: inline-block; text-decoration: none; " href='https://pmny.in/5IJmbkyYdLuj'>Buy Now</a> </div> -->
                 
                   <!-- Trigger/Open The Modal -->
-                  <!-- <button id="myBtn">Open Modal</button> -->
-                <p>Site is under maintainance! Buying option will be back soon!</p>
+                  <button id="myBtn" style="margin: 10px;">Buy Now</button>
+                <!-- <p>Site is under maintainance! Buying option will be back soon!</p> -->
                   <!-- The Modal -->
                   <div id="myModal" class="modal">
                   
@@ -577,7 +619,7 @@ nav{
                                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                       </div> -->
                                       <br>
-                                      <button type="submit" onclick="register(event);" class="btn btn-primary">Submit</button>&nbsp;<small id="emailHelp" class="form-text text-muted">You can access course only after verification by our team.</small>
+                                      <button type="submit" onclick="register(event, 'white');" class="btn btn-primary">BUY</button>&nbsp;<small id="emailHelp" class="form-text text-muted">You can access course only after verification by our team.</small>
                                       <small id="emailHelp" class="form-text text-muted">We'll never share your email and other sensitive information with anyone else.</small>
 
                                   </form>
